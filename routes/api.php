@@ -15,17 +15,14 @@ use MongoDB\BSON;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-/*
-Route::middleware('auth:api') ->get('/user', function (Request $request) {
-    return $request->user();
-});*/
+
 
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/send_data', 'Api\OrderController@store');
+    Route::post('/get_orders', 'Api\OrderController@index');
+    Route::post('/logout', 'Auth\LoginController@login');
 });
-
 
 Route::post('/register', 'Auth\RegisterController@register');
 Route::post('/login', 'Auth\LoginController@login');
-Route::post('/logout', 'Auth\LoginController@login');

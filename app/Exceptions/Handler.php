@@ -5,7 +5,9 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-
+use Request;
+use Illuminate\Auth\AuthenticationException;
+use Response;
 class Handler extends ExceptionHandler
 {
     /**
@@ -59,6 +61,5 @@ class Handler extends ExceptionHandler
 
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        return response()->json(['error' => 'Unauthenticated'], 401);
     }
 }
